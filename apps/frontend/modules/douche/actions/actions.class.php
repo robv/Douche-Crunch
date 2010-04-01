@@ -9,7 +9,14 @@
  */
 class doucheActions extends sfActions {
 	public function executeIndex(sfWebRequest $request) {
-		$this->douche = DouchePeer::retrieveRandom();
+		$douche = DouchePeer::retrieveRandom();
+
+		var_dump($douche);
+
+		$douche->populateFromTwitter();
+
+
+		$this->douche = $douche;
 		$this->setTemplate('show');
 	}
 

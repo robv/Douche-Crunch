@@ -17,6 +17,7 @@
  * @package    lib.model
  */
 class Douche extends BaseDouche {
+	protected $twitter_data = array();
 
 	/**
 	 * Initializes internal state of Douche object.
@@ -32,5 +33,50 @@ class Douche extends BaseDouche {
 	public function __toString() {
 		return $this->getTwitterName();
 	}
+
+	protected function retrieveFromTwitter() {
+		if ($this->twitter_data !== array()) {
+			return true;
+		}
+		$twitter = new Twitter(sfConfig::get('app_twitter_username'), sfConfig::get('app_twitter_password'));
+		$data = json_decode($twitter->showUser(array('screen_name' => $this->getTwitterName()), 'json'), true);
+		if (isset($data['error'])) {
+			return false;
+		}
+
+		$this->twitter_data = $data;
+		return true;
+	}
+
+	protected function updateAllFromTwitter() {
+
+	}
+
+	protected function updateTwitterId() {
+		$this->updateFromTwitter('id', DouchePeer::TWITTER_ID);
+		//$this->updateFromTwitter
+	}
+
+	/**
+	 * Update a value from the twitter data
+	 * @param string Source index from the twitter_data array
+	 * @param sring $destination Destination DouchePeer::COL_NAME constant
+	 * @return bool
+	 */
+	protected function updateFromTwitter($source, $destination) {
+		if (!$this->retrieveFromTwitter()) {
+			return false;
+		}
+
+		if (isset($this->twitter_data[$source])) {
+			$this->setByName($destination, $this->twitter_data[$source], BasePeer::TYPE_COLNAME);
+			return true;
+		}
+
+		return false;
+	}
+
+
+
 
 } // Douche
