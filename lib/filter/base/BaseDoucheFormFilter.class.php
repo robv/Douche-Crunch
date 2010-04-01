@@ -16,7 +16,7 @@ abstract class BaseDoucheFormFilter extends BaseFormFilterPropel
       'twitter_id'     => new sfWidgetFormFilterInput(),
       'twitter_name'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'image_url'      => new sfWidgetFormFilterInput(),
-      'follower_count' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'follower_count' => new sfWidgetFormFilterInput(),
       'latest_tweet'   => new sfWidgetFormFilterInput(),
       'display'        => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'created_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),

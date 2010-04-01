@@ -32,7 +32,7 @@ abstract class BaseDoucheForm extends BaseFormPropel
       'twitter_id'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'twitter_name'   => new sfValidatorString(array('max_length' => 255)),
       'image_url'      => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'follower_count' => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647)),
+      'follower_count' => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
       'latest_tweet'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'display'        => new sfValidatorBoolean(),
       'created_at'     => new sfValidatorDateTime(array('required' => false)),

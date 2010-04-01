@@ -17,7 +17,7 @@ CREATE TABLE `douche`
 	`twitter_id` VARCHAR(255),
 	`twitter_name` VARCHAR(255)  NOT NULL,
 	`image_url` VARCHAR(255),
-	`follower_count` INTEGER(11)  NOT NULL,
+	`follower_count` INTEGER(11),
 	`latest_tweet` VARCHAR(255),
 	`display` TINYINT default 0 NOT NULL,
 	`created_at` DATETIME,
