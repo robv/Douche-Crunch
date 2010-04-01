@@ -17,5 +17,9 @@
  * @package    lib.model
  */
 class DouchePeer extends BaseDouchePeer {
-
+	public static function retrieveByTwitterName($twitter_name) {
+		$c = new Criteria;
+		$c->add(DouchePeer::TWITTER_NAME, $twitter_name);
+		return self::doSelectOne($c);
+	}
 } // DouchePeer

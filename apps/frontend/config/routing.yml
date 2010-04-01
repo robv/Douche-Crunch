@@ -4,7 +4,20 @@
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: douche, action: index }
+
+douche:
+  class:   sfPropelRouteCollection
+  options: { model: Douche }
+
+douche_view:
+  url:     /douche/:twitter_name
+  class:   sfPropelRoute
+  options: { model: Douche, type: object }
+  param:   { module: douche, action: show }
+  requirements:
+    id: \s+
+    sf_method: [get]
 
 # generic rules
 # please, remove them by adding more specific rules
