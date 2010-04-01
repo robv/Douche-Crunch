@@ -1,14 +1,9 @@
-douche:
-  class:   sfPropelRouteCollection
-  options: { model: Douche }
-
 douche_view:
-  url:     /:twitter_screen_name
+  url:     /:twitter_screen_name/:twitter_name_slug
   class:   sfPropelRoute
   options: { model: Douche, type: object }
   param:   { module: douche, action: show }
   requirements:
-    id: \s+
     sf_method: [get]
 
 douche_confirm:
@@ -17,7 +12,6 @@ douche_confirm:
   options: { model: Douche, type: object }
   param:   { module: douche, action: confirm }
   requirements:
-    id: \s+
     sf_method: [get]
 
 douche_deny:
@@ -26,8 +20,11 @@ douche_deny:
   options: { model: Douche, type: object }
   param:   { module: douche, action: deny }
   requirements:
-    id: \s+
     sf_method: [get]
+
+douche:
+  class:   sfPropelRouteCollection
+  options: { model: Douche }
 
 homepage:
   url:   /

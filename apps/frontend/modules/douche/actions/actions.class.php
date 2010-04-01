@@ -10,8 +10,7 @@
 class doucheActions extends sfActions {
 	public function executeIndex(sfWebRequest $request) {
 		$douche = DouchePeer::retrieveRandom();
-
-		$this->redirect('@douche_view?twitter_screen_name=' . $douche->getTwitterScreenName());
+		$this->redirect('douche_view', $douche);
 	}
 
 	public function executeNew(sfWebRequest $request) {
@@ -61,7 +60,7 @@ class doucheActions extends sfActions {
 		if ($form->isValid()) {
 			$douche = $form->save();
 
-			$this->redirect('@douche_view?twitter_screen_name='.$douche->getTwitterScreenName());
+			$this->redirect('douche_view', $douche);
 		}
 	}
 }

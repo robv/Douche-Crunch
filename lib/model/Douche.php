@@ -33,6 +33,10 @@ class Douche extends BaseDouche {
 		return $this->getTwitterName();
 	}
 
+	public function getTwitterNameSlug() {
+		return UrlTools::slugify($this->getTwitterName());
+	}
+
 	public function getDouchePercentage() {
 		if ($this->isTwitterProtected()) {
 			return 0;
