@@ -20,7 +20,7 @@ class DouchePeer extends BaseDouchePeer {
 	public static function retrieveByTwitterName($twitter_name) {
 		$c = new Criteria;
 		$c->add(DouchePeer::TWITTER_NAME, $twitter_name);
-		return self::doSelectOne($c);
+		return DouchePeer::doSelectOne($c);
 	}
 
 	/**
@@ -41,6 +41,6 @@ class DouchePeer extends BaseDouchePeer {
 
 		$c->setOffset($rand);
 
-		return self::doSelectOne($c);
+		return DouchePeer::doSelectOne($c);
 	}
 } // DouchePeer

@@ -10,10 +10,7 @@
 class doucheActions extends sfActions {
 	public function executeIndex(sfWebRequest $request) {
 		$douche = DouchePeer::retrieveRandom();
-
-		var_dump($douche);
-
-		$douche->populateFromTwitter();
+		
 
 
 		$this->douche = $douche;
@@ -21,6 +18,9 @@ class doucheActions extends sfActions {
 	}
 
 	public function executeNew(sfWebRequest $request) {
+		$douche = new Douche();
+		$douche->setSubmitIp($request->getRemoteAddress());
+
 		$this->form = new NewDoucheForm();
 	}
 
@@ -36,6 +36,8 @@ class doucheActions extends sfActions {
 
 	public function executeShow(sfWebRequest $request) {
 		$douche = $this->getRoute()->getObject();
+		$douche->updateAllFromTwitter();
+		$douche->save();
 		$this->douche = $douche;
 	}
 
@@ -44,7 +46,7 @@ class doucheActions extends sfActions {
 		if ($form->isValid()) {
 			$douche = $form->save();
 
-			$this->redirect('douche/edit?id='.$douche->getId());
+			$this->redirect('@douche_view?twitter_screen_name='.$douche->getTwitterScreenName());
 		}
 	}
 }

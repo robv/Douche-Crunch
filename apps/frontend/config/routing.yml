@@ -11,7 +11,7 @@ douche:
   options: { model: Douche }
 
 douche_view:
-  url:     /douche/:twitter_name
+  url:     /u/:twitter_screen_name
   class:   sfPropelRoute
   options: { model: Douche, type: object }
   param:   { module: douche, action: show }

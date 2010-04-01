@@ -13,18 +13,24 @@ DROP TABLE IF EXISTS `douche`;
 CREATE TABLE `douche`
 (
 	`id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
-	`submit_ip` INTEGER(11),
+	`submit_ip` VARCHAR(16),
 	`twitter_id` VARCHAR(255),
-	`twitter_name` VARCHAR(255)  NOT NULL,
+	`twitter_screen_name` VARCHAR(255)  NOT NULL,
+	`twitter_name` VARCHAR(255),
+	`twitter_protected` TINYINT default 0 NOT NULL,
+	`twitter_followers` VARCHAR(255),
+	`twitter_tweets` VARCHAR(255),
+	`twitter_friends` VARCHAR(255),
+	`twitter_verified` VARCHAR(255),
+	`twitter_description` VARCHAR(255),
 	`image_url` VARCHAR(255),
-	`follower_count` INTEGER(11),
 	`latest_tweet` VARCHAR(255),
 	`display` TINYINT default 0 NOT NULL,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
 	KEY `douche_I_1`(`twitter_id`),
-	KEY `douche_I_2`(`twitter_name`),
+	KEY `douche_I_2`(`twitter_screen_name`),
 	KEY `DDISP`(`display`)
 )Type=InnoDB;
 

@@ -6,11 +6,11 @@ propel:
   douche:
     _attributes: { phpName: Douche }
     id: { type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
-    submit_ip: { type: INTEGER, size: '11', required: false }
+    submit_ip: { type: VARCHAR, size: '16', required: false }
     twitter_id: { type: VARCHAR, size: '255', index: true, required: false}
     twitter_screen_name: { type: VARCHAR, size: '255', index: true, required: true}
     twitter_name: { type: VARCHAR, size: '255', required: false }
-    twitter_protected: { type: BOOL, required: true, defaultValue: false }
+    twitter_protected: { type: BOOLEAN, required: true, defaultValue: false }
     twitter_followers: { type: VARCHAR, size: '255', required: false }
     twitter_tweets: { type: VARCHAR, size: '255', required: false }
     twitter_friends: { type: VARCHAR, size: '255', required: false }
