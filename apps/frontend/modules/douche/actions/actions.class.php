@@ -10,11 +10,10 @@
 class doucheActions extends sfActions {
 	public function executeIndex(sfWebRequest $request) {
 		$douche = DouchePeer::retrieveRandom();
-		
-
 
 		$this->douche = $douche;
-		$this->setTemplate('show');
+
+		$this->redirect('@douche_view?twitter_screen_name=' . $this->douche->getTwitterScreenName());
 	}
 
 	public function executeNew(sfWebRequest $request) {

@@ -33,6 +33,10 @@ class Douche extends BaseDouche {
 		return $this->getTwitterName();
 	}
 
+	public function getDouchePercentage() {
+
+	}
+
 	/**
 	 * Save the object, and automatically update it's data if it is a brand new
 	 * record.
@@ -47,7 +51,6 @@ class Douche extends BaseDouche {
 		}
 		parent::save($con);
 	}
-
 
 
 	/**
@@ -75,7 +78,7 @@ class Douche extends BaseDouche {
 	 * Update the latest tweet
 	 * @return bool
 	 */
-	protected function updateLatestTweet() {
+	public function updateLatestTweet() {
 		if (!$this->retrieveFromTwitter()) {
 			return false;
 		}
@@ -152,7 +155,14 @@ class Douche extends BaseDouche {
 	 * Update the database's twitter image url from Twitter.
 	 */
 	protected function updateTwitterProfileImageUrl() {
-		return $this->updateFromTwitter('profile_image_url', DouchePeer::IMAGE_URL);
+		if ($this->updateFromTwitter('profile_image_url', DouchePeer::IMAGE_URL)) {
+			if (strpos($this->getImageUrl(), 'twimg.com') !== false) {
+				$this->setImageUrl(substr($this->getImageUrl(), 0, -11) . '.png');
+			}
+
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -174,7 +184,7 @@ class Douche extends BaseDouche {
 		return false;
 	}
 
-	public function retrieveFromTwitter() {
+	protected function retrieveFromTwitter() {
 		if ($this->twitter_data !== array()) {
 			return true;
 		}
