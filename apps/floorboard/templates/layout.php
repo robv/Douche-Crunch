@@ -9,6 +9,9 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+	  <div>
+		  <?php echo link_to('Douche Votes', 'douchevote/index') . ' | ' . link_to('Douches', 'douche/index'); ?>
+	  </div>
     <?php echo $sf_content ?>
   </body>
 </html>

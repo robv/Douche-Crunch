@@ -8,7 +8,7 @@ propel:
     id: { type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
     submit_ip: { type: INTEGER, size: '11', required: false }
     twitter_id: { type: VARCHAR, size: '255', index: true, required: false}
-    twitter_name: { type: VARCHAR, size: '255', index: true, required: false}
+    twitter_name: { type: VARCHAR, size: '255', index: true, required: true}
     image_url: { type: VARCHAR, size: '255', required: false }
     follower_count: { type: INTEGER, size: '11', required: true }
     latest_tweet: { type: VARCHAR, size: '255', required: false }

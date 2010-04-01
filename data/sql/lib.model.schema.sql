@@ -15,7 +15,7 @@ CREATE TABLE `douche`
 	`id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
 	`submit_ip` INTEGER(11),
 	`twitter_id` VARCHAR(255),
-	`twitter_name` VARCHAR(255),
+	`twitter_name` VARCHAR(255)  NOT NULL,
 	`image_url` VARCHAR(255),
 	`follower_count` INTEGER(11)  NOT NULL,
 	`latest_tweet` VARCHAR(255),
