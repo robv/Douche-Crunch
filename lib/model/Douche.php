@@ -34,7 +34,41 @@ class Douche extends BaseDouche {
 	}
 
 	public function getDouchePercentage() {
+		if ($this->isTwitterProtected()) {
+			return 0;
+		}
+		return 100;
+		//>10000 followers
+		//follow less than 10%
+		//tweet more than 20/day
 
+	}
+
+	public function isTwitterProtected() {
+		return ($this->getTwitterProtected() == 1);
+	}
+
+	/**
+	 *
+	 * @return int
+	 */
+	public function getUpVotes() {
+		$c = new Criteria;
+		$c->add(DoucheVotePeer::DOUCHE_ID, $this->getId());
+		$c->add(DoucheVotePeer::VOTE, 1);
+		return DoucheVotePeer::doCount($c);
+	}
+
+	/**
+	 * Get the number of down-votes
+	 *
+	 * @return int The number of down-votes
+	 */
+	public function getDownVotes() {
+		$c = new Criteria;
+		$c->add(DoucheVotePeer::DOUCHE_ID, $this->getId());
+		$c->add(DoucheVotePeer::VOTE, -1);
+		return DoucheVotePeer::doCount($c);
 	}
 
 	/**
@@ -157,9 +191,8 @@ class Douche extends BaseDouche {
 	protected function updateTwitterProfileImageUrl() {
 		if ($this->updateFromTwitter('profile_image_url', DouchePeer::IMAGE_URL)) {
 			if (strpos($this->getImageUrl(), 'twimg.com') !== false) {
-				$this->setImageUrl(substr($this->getImageUrl(), 0, -11) . '.png');
+				$this->setImageUrl(str_replace('_normal', '', $this->getImageUrl()));
 			}
-
 			return true;
 		}
 		return false;

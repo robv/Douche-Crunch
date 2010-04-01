@@ -1,17 +1,9 @@
-# You can find more information about this file on the symfony website:
-# http://www.symfony-project.org/reference/1_4/en/10-Routing
-
-# default rules
-homepage:
-  url:   /
-  param: { module: douche, action: index }
-
 douche:
   class:   sfPropelRouteCollection
   options: { model: Douche }
 
 douche_view:
-  url:     /u/:twitter_screen_name
+  url:     /:twitter_screen_name
   class:   sfPropelRoute
   options: { model: Douche, type: object }
   param:   { module: douche, action: show }
@@ -19,11 +11,24 @@ douche_view:
     id: \s+
     sf_method: [get]
 
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
+douche_confirm:
+  url:     /:twitter_screen_name/yeah-they-are
+  class:   sfPropelRoute
+  options: { model: Douche, type: object }
+  param:   { module: douche, action: confirm }
+  requirements:
+    id: \s+
+    sf_method: [get]
 
-default:
-  url:   /:module/:action/*
+douche_deny:
+  url:     /:twitter_screen_name/not-so-much
+  class:   sfPropelRoute
+  options: { model: Douche, type: object }
+  param:   { module: douche, action: deny }
+  requirements:
+    id: \s+
+    sf_method: [get]
+
+homepage:
+  url:   /
+  param: { module: douche, action: index }

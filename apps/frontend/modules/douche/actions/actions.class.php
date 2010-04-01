@@ -11,9 +11,7 @@ class doucheActions extends sfActions {
 	public function executeIndex(sfWebRequest $request) {
 		$douche = DouchePeer::retrieveRandom();
 
-		$this->douche = $douche;
-
-		$this->redirect('@douche_view?twitter_screen_name=' . $this->douche->getTwitterScreenName());
+		$this->redirect('@douche_view?twitter_screen_name=' . $douche->getTwitterScreenName());
 	}
 
 	public function executeNew(sfWebRequest $request) {
@@ -33,10 +31,28 @@ class doucheActions extends sfActions {
 		$this->setTemplate('new');
 	}
 
+	public function executeConfirm(sfWebRequest $request) {
+		$douche = $this->getRoute()->getObject();
+
+		$vote = new DoucheVote();
+		$vote->setDouche($douche);
+		$vote->setSubmitIp($request->getRemoteAddress());
+		$vote->setVote(1);
+		$vote->save();
+	}
+
+	public function executeDeny(sfWebRequest $request) {
+		$douche = $this->getRoute()->getObject();
+
+		$vote = new DoucheVote();
+		$vote->setDouche($douche);
+		$vote->setSubmitIp($request->getRemoteAddress());
+		$vote->setVote(-1);
+		$vote->save();
+	}
+
 	public function executeShow(sfWebRequest $request) {
 		$douche = $this->getRoute()->getObject();
-		$douche->updateAllFromTwitter();
-		$douche->save();
 		$this->douche = $douche;
 	}
 
