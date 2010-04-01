@@ -1,0 +1,27 @@
+propel:
+  _attributes:
+    connection: propel
+    package: lib.model
+    defaultIdMethod: native
+  douche:
+    _attributes: { phpName: Douche }
+    id: { type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    submit_ip: { type: INTEGER, size: '11', required: false }
+    twitter_id: { type: VARCHAR, size: '255', index: true, required: false}
+    twitter_name: { type: VARCHAR, size: '255', index: true, required: false}
+    image_url: { type: VARCHAR, size: '255', required: false }
+    follower_count: { type: INTEGER, size: '11', required: true }
+    latest_tweet: { type: VARCHAR, size: '255', required: false }
+    display: { type: BOOLEAN, required: true, defaultValue: false }
+    created_at: { type: TIMESTAMP, required: false }
+    updated_at: { type: TIMESTAMP, required: false }
+    _indexes: { DDISP: [display] }
+  douche_vote:
+    _attributes: { phpName: DoucheVote }
+    id: { type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    douche_id: { type: INTEGER, size: '11', required: true, foreignTable: douche, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    submit_ip: { type: INTEGER, size: '11', required: false }
+    vote: { type: VARCHAR, size: '4', required: true, defaultValue: false }
+    created_at: { type: TIMESTAMP, required: false }
+    updated_at: { type: TIMESTAMP, required: false }
+    _indexes: { VOTE: [vote, douche_id], DVCAT: [created_at] }

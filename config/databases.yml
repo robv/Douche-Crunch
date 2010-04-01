@@ -19,6 +19,13 @@ test:
     param:
       classname:  DebugPDO
 
+prod:
+  propel:
+    param:
+      dsn:				mysql:dbname=DoucheCrunch;host=localhost
+      username:   DouchCrunch3000
+      password:		Y3sIAmTh47Aw3s0m3
+
 all:
   propel:
     class:        sfPropelDatabase
