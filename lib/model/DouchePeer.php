@@ -22,4 +22,25 @@ class DouchePeer extends BaseDouchePeer {
 		$c->add(DouchePeer::TWITTER_NAME, $twitter_name);
 		return self::doSelectOne($c);
 	}
+
+	/**
+	 * Retrieve a single, random user to start from.
+	 * 
+	 * @param Criteria $crit
+	 * @return Douche
+	 */
+	public static function retrieveRandom(Criteria $crit = null) {
+		if ($crit instanceof Criteria) {
+			$c = clone $crit;
+		} else {
+			$c = new Criteria;
+		}
+
+		$total = self::doCount($c);
+		$rand = rand(0, $total - 1);
+
+		$c->setOffset($rand);
+
+		return self::doSelectOne($c);
+	}
 } // DouchePeer

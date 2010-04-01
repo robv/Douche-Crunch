@@ -9,7 +9,8 @@
  */
 class doucheActions extends sfActions {
 	public function executeIndex(sfWebRequest $request) {
-		$this->douches = DouchePeer::doSelect(new Criteria());
+		$this->douche = DouchePeer::retrieveRandom();
+		$this->setTemplate('show');
 	}
 
 	public function executeNew(sfWebRequest $request) {
@@ -31,30 +32,6 @@ class doucheActions extends sfActions {
 		$this->douche = $douche;
 	}
 
-	public function executeEdit(sfWebRequest $request) {
-		$this->forward404Unless($douche = DouchePeer::retrieveByTwitterName($request->getParameter('twitter_name')), sprintf('Object douche does not exist (%s).', $request->getParameter('twitter_name')));
-		$this->form = new NewDoucheForm($douche);
-	}
-
-	public function executeUpdate(sfWebRequest $request) {
-		$this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-		$this->forward404Unless($douche = DouchePeer::retrieveByPk($request->getParameter('id')), sprintf('Object douche does not exist (%s).', $request->getParameter('id')));
-		$this->form = new NewDoucheForm($douche);
-
-		$this->processForm($request, $this->form);
-
-		$this->setTemplate('edit');
-	}
-
-	public function executeDelete(sfWebRequest $request) {
-		$request->checkCSRFProtection();
-
-		$this->forward404Unless($douche = DouchePeer::retrieveByPk($request->getParameter('id')), sprintf('Object douche does not exist (%s).', $request->getParameter('id')));
-		$douche->delete();
-
-		$this->redirect('douche/index');
-	}
-	
 	protected function processForm(sfWebRequest $request, sfForm $form) {
 		$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 		if ($form->isValid()) {
