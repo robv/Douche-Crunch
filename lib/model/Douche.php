@@ -89,70 +89,70 @@ class Douche extends BaseDouche {
 	 * Update the database's twitter ID from Twitter.
 	 */
 	protected function updateTwitterId() {
-		$this->updateFromTwitter('id', DouchePeer::TWITTER_ID);
+		return $this->updateFromTwitter('id', DouchePeer::TWITTER_ID);
 	}
 
 	/**
 	 * Update the database's twitter screen name from Twitter.
 	 */
 	protected function updateTwitterScreenName() {
-		$this->updateFromTwitter('screen_name', DouchePeer::TWITTER_SCREEN_NAME);
+		return $this->updateFromTwitter('screen_name', DouchePeer::TWITTER_SCREEN_NAME);
 	}
 
 	/**
 	 * Update the database's twitter Name from Twitter.
 	 */
 	protected function updateTwitterName() {
-		$this->updateFromTwitter('name', DouchePeer::TWITTER_NAME);
+		return $this->updateFromTwitter('name', DouchePeer::TWITTER_NAME);
 	}
 
 	/**
 	 * Update the database's twitter description from Twitter.
 	 */
 	protected function updateTwitterDescription() {
-		$this->updateFromTwitter('description', DouchePeer::TWITTER_DESCRIPTION);
+		return $this->updateFromTwitter('description', DouchePeer::TWITTER_DESCRIPTION);
 	}
 
 	/**
 	 * Update the database's twitter protected status from Twitter.
 	 */
 	protected function updateTwitterProtected() {
-		$this->updateFromTwitter('protected', DouchePeer::TWITTER_PROTECTED);
+		return $this->updateFromTwitter('protected', DouchePeer::TWITTER_PROTECTED);
 	}
 
 	/**
 	 * Update the database's twitter follower count from Twitter.
 	 */
 	protected function updateTwitterFollows() {
-		$this->updateFromTwitter('followers_count', DouchePeer::TWITTER_FOLLOWERS);
+		return $this->updateFromTwitter('followers_count', DouchePeer::TWITTER_FOLLOWERS);
 	}
 
 	/**
 	 * Update the database's twitter tweets from Twitter.
 	 */
 	protected function updateTwitterTweets() {
-		$this->updateFromTwitter('statuses_count', DouchePeer::TWITTER_TWEETS);
+		return $this->updateFromTwitter('statuses_count', DouchePeer::TWITTER_TWEETS);
 	}
 
 	/**
 	 * Update the database's twitter friends from Twitter.
 	 */
 	protected function updateTwitterFriends() {
-		$this->updateFromTwitter('friends_count', DouchePeer::TWITTER_FRIENDS);
+		return $this->updateFromTwitter('friends_count', DouchePeer::TWITTER_FRIENDS);
 	}
 
 	/**
 	 * Update the database's twitter verified from Twitter.
 	 */
 	protected function updateTwitterVerified() {
-		$this->updateFromTwitter('verified', DouchePeer::TWITTER_VERIFIED);
+		return $this->updateFromTwitter('verified', DouchePeer::TWITTER_VERIFIED);
 	}
 
 	/**
 	 * Update the database's twitter image url from Twitter.
 	 */
 	protected function updateTwitterProfileImageUrl() {
-		$this->updateFromTwitter('profile_image_url', DouchePeer::IMAGE_URL);
+		return $this->updateFromTwitter('profile_image_url', DouchePeer::IMAGE_URL);
 	}
 
 	/**
@@ -181,7 +181,8 @@ class Douche extends BaseDouche {
 		$twitter = new Twitter(sfConfig::get('app_twitter_username'), sfConfig::get('app_twitter_password'));
 
 		$params = array();
-		if ($this->getTwitterId() !== '') {
+		$twitter_id = $this->getTwitterId();
+		if (!empty($twitter_id)) {
 			$params['id'] = $this->getTwitterId();
 		} else {
 			$params['screen_name'] = $this->getTwitterScreenName();
