@@ -18,5 +18,21 @@
 		<div class="hr"><hr /></div>
 		
 		<h2>Their Latest Tweet</h2>
-		
-		<p><?php echo $douche->getLatestTweet(); ?></p>
+				<?php
+				$phrases = array('I have to go get my Ed Hardy shirt.',
+						"Why should I follow you back? You're a nobody.",
+						"I can't be bothered right now. I'm synergizing.",
+						'Retweet you? What will I get out of it?',
+						"I'm a social media coach.",
+						'My job title? Evangelist.',
+						"Just sayin'",
+						'#RememberTheTime I was awesome? #always',
+						'Dear Internet...blah blah blah #complaint',
+						"I just became the mayor of your mom's house on WhoreSquare.",
+						'I love me some me.',
+						"I'm going out on a limb here: Apple's new product is going to be really popular.",
+						"Apple's new product is going to be lame sauce.",
+						'Check out this posed pic of my dog driving my car: <a href="http://twitpic.com/1cn0hs">http://twitpic.com/1cn0hs</a>');
+				$key = array_rand($phrases);
+				echo '<p>"' . $phrases[$key] . '" - @' . $douche->getTwitterScreenName() . ' </p>';
+?>

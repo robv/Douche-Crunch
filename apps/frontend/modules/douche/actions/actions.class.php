@@ -11,7 +11,7 @@ class doucheActions extends sfActions {
 	public function executeIndex(sfWebRequest $request) {
 		$c = new Criteria;
 		
-		$c->add(DouchePeer::ID, $this->getUser()->getAttribute('already_viewed', array()), Criteria::NOT_IN);
+		//$c->add(DouchePeer::ID, $this->getUser()->getAttribute('already_viewed', array()), Criteria::NOT_IN);
 		
 		$douche = DouchePeer::retrieveRandom($c);
 

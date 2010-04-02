@@ -37,7 +37,7 @@ class DouchePeer extends BaseDouchePeer {
 			$c->addDescendingOrderByColumn('total_doucheyness');
 			$c->addGroupByColumn(DoucheVotePeer::DOUCHE_ID);
 			$c->add(DouchePeer::ID, DouchePeer::ID . ' = ' . DoucheVotePeer::DOUCHE_ID, Criteria::CUSTOM);
-			$c->setLimit(10);
+			$c->setLimit(15);
 		}
 
 		return DouchePeer::doSelect($c);
@@ -56,7 +56,7 @@ class DouchePeer extends BaseDouchePeer {
 			$c = new Criteria;
 		}
 
-		//$c->add(DouchePeer::DISPLAY, 1);
+		$c->add(DouchePeer::TWITTER_FOLLOWERS, 4000, Criteria::GREATER_THAN);
 
 		$total = self::doCount($c);
 		$rand = rand(0, $total - 1);

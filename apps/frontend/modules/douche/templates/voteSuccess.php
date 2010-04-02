@@ -1,8 +1,5 @@
 <?php
-if ($direction) {
-
-	echo 'What a cock-wad.';
-} else {
+if (!$direction) {
 	echo 'Whaaat?';
 }
 
