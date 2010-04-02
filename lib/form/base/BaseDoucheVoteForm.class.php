@@ -25,7 +25,7 @@ abstract class BaseDoucheVoteForm extends BaseFormPropel
     $this->setValidators(array(
       'id'         => new sfValidatorPropelChoice(array('model' => 'DoucheVote', 'column' => 'id', 'required' => false)),
       'douche_id'  => new sfValidatorPropelChoice(array('model' => 'Douche', 'column' => 'id')),
-      'submit_ip'  => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
+      'submit_ip'  => new sfValidatorString(array('max_length' => 16, 'required' => false)),
       'vote'       => new sfValidatorString(array('max_length' => 4)),
       'created_at' => new sfValidatorDateTime(array('required' => false)),
       'updated_at' => new sfValidatorDateTime(array('required' => false)),

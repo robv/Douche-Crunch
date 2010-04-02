@@ -26,8 +26,8 @@ propel:
     _attributes: { phpName: DoucheVote }
     id: { type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
     douche_id: { type: INTEGER, size: '11', required: true, foreignTable: douche, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
-    submit_ip: { type: INTEGER, size: '11', required: false }
+    submit_ip: { type: VARCHAR, size: '16', required: false }
     vote: { type: VARCHAR, size: '4', required: true, defaultValue: false }
     created_at: { type: TIMESTAMP, required: false }
     updated_at: { type: TIMESTAMP, required: false }
-    _indexes: { VOTE: [vote, douche_id], DVCAT: [created_at] }
+    _indexes: { VOTE: [vote, douche_id], DVCAT: [created_at], IPADDR: [submit_ip] }

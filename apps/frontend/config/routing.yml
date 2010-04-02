@@ -1,3 +1,7 @@
+douche:
+  class:   sfPropelRouteCollection
+  options: { model: Douche }
+  
 douche_confirm:
   url:     /:twitter_screen_name/yeah-they-are
   class:   sfPropelRoute
@@ -23,9 +27,7 @@ douche_view:
     sf_method: [get]
 
 
-douche:
-  class:   sfPropelRouteCollection
-  options: { model: Douche }
+
 
 homepage:
   url:   /

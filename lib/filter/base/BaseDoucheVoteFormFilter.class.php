@@ -21,7 +21,7 @@ abstract class BaseDoucheVoteFormFilter extends BaseFormFilterPropel
 
     $this->setValidators(array(
       'douche_id'  => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Douche', 'column' => 'id')),
-      'submit_ip'  => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'submit_ip'  => new sfValidatorPass(array('required' => false)),
       'vote'       => new sfValidatorPass(array('required' => false)),
       'created_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'updated_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
@@ -44,7 +44,7 @@ abstract class BaseDoucheVoteFormFilter extends BaseFormFilterPropel
     return array(
       'id'         => 'Number',
       'douche_id'  => 'ForeignKey',
-      'submit_ip'  => 'Number',
+      'submit_ip'  => 'Text',
       'vote'       => 'Text',
       'created_at' => 'Date',
       'updated_at' => 'Date',

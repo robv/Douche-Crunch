@@ -45,13 +45,14 @@ CREATE TABLE `douche_vote`
 (
 	`id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
 	`douche_id` INTEGER(11)  NOT NULL,
-	`submit_ip` INTEGER(11),
+	`submit_ip` VARCHAR(16),
 	`vote` VARCHAR(4) default '' NOT NULL,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
 	KEY `VOTE`(`vote`, `douche_id`),
 	KEY `DVCAT`(`created_at`),
+	KEY `IPADDR`(`submit_ip`),
 	INDEX `douche_vote_FI_1` (`douche_id`),
 	CONSTRAINT `douche_vote_FK_1`
 		FOREIGN KEY (`douche_id`)
