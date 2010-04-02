@@ -21,7 +21,7 @@
 	
 	<div id="container_container">
 		
-		<h1>DoucheCrunch</h1>
+		<h1><a href="<?php echo url_for('homepage'); ?>">DoucheCrunch</a></h1>
     
 	<?php echo $sf_content ?>
 

@@ -41,13 +41,14 @@ body {
 	font-size: 1.2em;
 }
 
-#container_container h1 {
+#container_container h1 a {
 	font-size: 3.4em;
 	margin: 30px 0 20px;
 	background: url(../images/main/header_logo.gif) no-repeat left top;
 	text-indent: -9999px;
 	height: 46px;
 	overflow: hidden;
+	display: block;
 }
 
 #title_bar {
