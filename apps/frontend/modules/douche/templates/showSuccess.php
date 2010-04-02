@@ -1,8 +1,3 @@
-		<div class="next_prev">
-			<div class="prev"><a href="#">Previous</a></div>
-			<div class="next"><?php echo link_to('Next', 'douche/index'); ?></div>
-		</div>
-		
 		<h2 class="screen_name"><a href="http://twitter.com/<?php echo $douche->getTwitterScreenName(); ?>">@<?php echo $douche->getTwitterScreenName(); ?></a></h2>
 		
 		<div class="image_wrapper_wrapper">

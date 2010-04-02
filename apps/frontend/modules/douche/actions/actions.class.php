@@ -46,27 +46,11 @@ class doucheActions extends sfActions {
 	}
 
 	public function executeConfirm(sfWebRequest $request) {
-		$this->douche = $this->getRoute()->getObject();
-
-		$vote = new DoucheVote();
-		$vote->setDouche($this->douche);
-		$vote->setSubmitIp($request->getRemoteAddress());
-		$vote->setVote(1);
-		$vote->save();
-		
-		$this->voteArray = $this->getVoteText($this->douche);
+		return $this->processVote($request, true);
 	}
 
 	public function executeDeny(sfWebRequest $request) {
-		$this->douche = $this->getRoute()->getObject();
-
-		$vote = new DoucheVote();
-		$vote->setDouche($this->douche);
-		$vote->setSubmitIp($request->getRemoteAddress());
-		$vote->setVote(-1);
-		$vote->save();
-		
-		$this->voteArray = $this->getVoteText($this->douche);
+		return $this->processVote($request, false);
 	}
 
 	public function executeShow(sfWebRequest $request) {
@@ -103,26 +87,27 @@ class doucheActions extends sfActions {
 		}
 	}
 	
-	private function getVoteText($douche) {
-		$upvotes = $douche->getUpVotes();
-		if ($upvotes == 1)
-		{
-			$upvotes = '1 person thinks ' . $douche->getTwitterName() . ' is a douche.';
+	protected function processVote(sfWebRequest $request, $direction) {
+		$this->douche = $this->getRoute()->getObject();
+
+		if ($direction) {
+			$vote_score = 1;
+		} else {
+			$vote_score = -1;
 		}
-		else
-		{
-			$upvotes = $upvotes . ' people think ' . $douche->getTwitterName() . ' is a douche.';
-		}
-		
-		$downvotes = $douche->getDownVotes();
-		if ($downvotes == 1)
-		{
-			$downvotes = '1 stupid person thinks ' . $douche->getTwitterName() . ' isn\'t a douche. Really?';
-		}
-		else
-		{
-			$downvotes = $downvotes . ' stupid people think ' . $douche->getTwitterName() . ' isn\'t a douche. Really?';
-		}
-		return array('up'=>$upvotes, 'down'=>$downvotes);
+
+		$vote = new DoucheVote();
+		$vote->setDouche($this->douche);
+		$vote->setSubmitIp($request->getRemoteAddress());
+		$vote->setVote($vote_score);
+		$vote->save();
+
+		$this->direction = (bool) $direction;
+		$this->name = $this->douche->getTwitterName();
+		$this->upvotes = $this->douche->getUpVotes();
+		$this->downvotes = $this->douche->getDownVotes();
+
+		$this->setTemplate('vote');
+		return sfView::SUCCESS;
 	}
 }
