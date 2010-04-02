@@ -23,11 +23,12 @@
 		
 		<h1><a href="<?php echo url_for('homepage'); ?>">DoucheCrunch</a></h1>
 
-		<div id="two_column_content">
 			<div id="title_bar">
 				<h2>Social Media Douchebag or Not?</h2>
 			</div>
 
+		<div id="two_column_content">
+			
 			<div id="two_column_content_left">
 				<?php echo $sf_content ?>
 
@@ -40,8 +41,9 @@
 				<h2>Douche Leaderboard</h2>
 				<?php include_component('douche', 'leaderboard'); ?>
 			</div>
-
+			
 		</div>
+		
 	</div>
 
 </body>
