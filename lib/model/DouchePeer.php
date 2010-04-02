@@ -17,9 +17,9 @@
  * @package    lib.model
  */
 class DouchePeer extends BaseDouchePeer {
-	public static function retrieveByTwitterName($twitter_name) {
+	public static function retrieveByTwitterScreenName($twitter_screen_name) {
 		$c = new Criteria;
-		$c->add(DouchePeer::TWITTER_NAME, $twitter_name);
+		$c->add(DouchePeer::TWITTER_SCREEN_NAME, $twitter_screen_name);
 		return DouchePeer::doSelectOne($c);
 	}
 

@@ -9,8 +9,19 @@
  */
 class doucheActions extends sfActions {
 	public function executeIndex(sfWebRequest $request) {
-		$douche = DouchePeer::retrieveRandom();
-		$this->redirect('douche_view', $douche);
+		$c = new Criteria;
+		
+		$c->add(DouchePeer::ID, $this->getUser()->getAttribute('already_viewed', array()), Criteria::NOT_IN);
+		
+		$douche = DouchePeer::retrieveRandom($c);
+
+		if ($douche instanceof Douche) {
+			$redirect_to = $douche;
+		} else {
+			$redirect_to = DouchePeer::retrieveRandom();
+		}
+
+		$this->redirect('douche_view', $redirect_to);
 	}
 
 	public function executeNew(sfWebRequest $request) {
@@ -56,6 +67,11 @@ class doucheActions extends sfActions {
 
 	public function executeShow(sfWebRequest $request) {
 		$douche = $this->getRoute()->getObject();
+
+		$viewed = $this->getUser()->getAttribute('already_viewed', array());
+		$viewed[$douche->getId()] = $douche->getId();
+		$this->getUser()->setAttribute('already_viewed', $viewed);
+
 		$this->douche = $douche;
 	}
 
@@ -63,8 +79,18 @@ class doucheActions extends sfActions {
 		$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 		if ($form->isValid()) {
 			$douche = $form->save();
-
+			$name = $douche->getTwitterScreenName();
+		} else {
+			$params = $request->getParameter($form->getName());
+			$name = $params['twitter_screen_name'];
+			$douche = DouchePeer::retrieveByTwitterScreenName($name);
+		}
+		
+		if ($douche instanceof Douche && !$douche->isNew()) {
 			$this->redirect('douche_view', $douche);
+		} else {
+			$this->getUser()->setFlash('error', "Yikes! We couldn't find an account on twitter named " . $name . "... sorry :(");
+			$this->redirect($request->getReferer());
 		}
 	}
 	

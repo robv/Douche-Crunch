@@ -51,6 +51,13 @@ abstract class BaseDoucheForm extends BaseFormPropel
       'updated_at'          => new sfValidatorDateTime(array('required' => false)),
     ));
 
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorAnd(array(
+        new sfValidatorPropelUnique(array('model' => 'Douche', 'column' => array('twitter_id'))),
+        new sfValidatorPropelUnique(array('model' => 'Douche', 'column' => array('twitter_screen_name'))),
+      ))
+    );
+
     $this->widgetSchema->setNameFormat('douche[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

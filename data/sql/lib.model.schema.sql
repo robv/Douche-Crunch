@@ -29,8 +29,8 @@ CREATE TABLE `douche`
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
-	KEY `douche_I_1`(`twitter_id`),
-	KEY `douche_I_2`(`twitter_screen_name`),
+	UNIQUE KEY `douche_U_1` (`twitter_id`),
+	UNIQUE KEY `douche_U_2` (`twitter_screen_name`),
 	KEY `DDISP`(`display`)
 )Type=InnoDB;
 

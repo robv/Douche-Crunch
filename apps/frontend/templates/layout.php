@@ -22,7 +22,7 @@
 	<div id="container_container">
 		
 		<h1><a href="<?php echo url_for('homepage'); ?>">DoucheCrunch</a></h1>
-
+<?php if ($sf_user->hasFlash('error')) { echo $sf_user->getFlash('error'); } ?>
 		<div id="two_column_content">
 			<div id="title_bar">
 				<h2>Social Media Douchebag or Not?</h2>
