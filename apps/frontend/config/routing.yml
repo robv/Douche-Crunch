@@ -1,11 +1,3 @@
-douche_view:
-  url:     /:twitter_screen_name/:twitter_name_slug
-  class:   sfPropelRoute
-  options: { model: Douche, type: object }
-  param:   { module: douche, action: show }
-  requirements:
-    sf_method: [get]
-
 douche_confirm:
   url:     /:twitter_screen_name/yeah-they-are
   class:   sfPropelRoute
@@ -21,6 +13,15 @@ douche_deny:
   param:   { module: douche, action: deny }
   requirements:
     sf_method: [get]
+
+douche_view:
+  url:     /:twitter_screen_name/:twitter_name_slug
+  class:   sfPropelRoute
+  options: { model: Douche, type: object }
+  param:   { module: douche, action: show }
+  requirements:
+    sf_method: [get]
+
 
 douche:
   class:   sfPropelRouteCollection

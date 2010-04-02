@@ -4,7 +4,7 @@
 prod:
   .settings:
     no_script_name:         true
-    logging_enabled:        false
+    logging_enabled:        true
 
 dev:
   .settings:
@@ -23,6 +23,9 @@ test:
     etag:                   false
 
 all:
+  .actions:
+    error_404_module: errors
+    error_404_action: error404
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:            708f63026abde970fcadcdcb6e8605c8529e7489
