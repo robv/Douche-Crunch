@@ -1,7 +1,11 @@
+errors:
+  url:		/error/:action
+  param: { module: errors }
+
 douche:
   class:   sfPropelRouteCollection
   options: { model: Douche }
-  
+
 douche_confirm:
   url:     /:twitter_screen_name/yeah-they-are
   class:   sfPropelRoute
@@ -25,6 +29,8 @@ douche_view:
   param:   { module: douche, action: show }
   requirements:
     sf_method: [get]
+
+
 
 homepage:
   url:   /

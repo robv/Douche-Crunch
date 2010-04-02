@@ -56,6 +56,8 @@ class DouchePeer extends BaseDouchePeer {
 			$c = new Criteria;
 		}
 
+		//$c->add(DouchePeer::DISPLAY, 1);
+
 		$total = self::doCount($c);
 		$rand = rand(0, $total - 1);
 

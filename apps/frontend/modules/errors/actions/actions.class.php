@@ -20,4 +20,8 @@ class errorsActions extends sfActions {
 		// web/errors/unavailable.php
 		// @TODO - do this.
 	}
+
+	public function executeNoUsers(sfWebRequest $request) {
+		// No users available to display.
+	}
 }
