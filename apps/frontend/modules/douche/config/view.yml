@@ -1,0 +1,16 @@
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        Douche Crunch
+    #description:  symfony project
+    #keywords:     symfony, project
+    #language:     en
+    #robots:       index, follow
+
+  stylesheets:    [main]
+  javascripts:    [jquery,common]
+ 
+  has_layout:     true
+  layout:         layout
