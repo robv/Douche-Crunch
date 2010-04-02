@@ -1,12 +1,3 @@
-<div id="title_bar">
-	<h2>Social Media Douchebag or Not?</h2>
-</div>
-
-
-<div id="two_column_content">
-	
-	<div id="two_column_content_left">
-		
 		<div class="next_prev">
 			<div class="prev"><a href="#">Previous</a></div>
 			<div class="next"><a href="#">Next</a></div>
@@ -34,15 +25,3 @@
 		<h2>Their Latest Tweet</h2>
 		
 		<p><?php echo $douche->getLatestTweet(); ?></p>
-		
-	</div>
-	
-	<div id="two_column_content_right">
-		<h2>Are they a Douche?</h2>
-		<?php include_component('douche', 'new'); ?>
-
-		<h2>Douche Leaderboard</h2>
-		<?php include_component('douche', 'leaderboard'); ?>
-	</div>
-	
-</div>

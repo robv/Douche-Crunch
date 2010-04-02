@@ -22,9 +22,26 @@
 	<div id="container_container">
 		
 		<h1><a href="<?php echo url_for('homepage'); ?>">DoucheCrunch</a></h1>
-    
-	<?php echo $sf_content ?>
 
+		<div id="two_column_content">
+			<div id="title_bar">
+				<h2>Social Media Douchebag or Not?</h2>
+			</div>
+
+			<div id="two_column_content_left">
+				<?php echo $sf_content ?>
+
+			</div>
+
+			<div id="two_column_content_right">
+				<h2>Are they a Douche?</h2>
+				<?php include_component('douche', 'new'); ?>
+
+				<h2>Douche Leaderboard</h2>
+				<?php include_component('douche', 'leaderboard'); ?>
+			</div>
+
+		</div>
 	</div>
 
 </body>
