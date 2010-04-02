@@ -1,0 +1,7 @@
+Thigns to think about:
+* What's the error checking like?
+* Can we get the tweet via JS so we don't hit the API limit?
+* Will we hit the API limit if we don't?
+* Flash could use some styling.
+* How else can we be awesome?
+* How do do the previous link?
