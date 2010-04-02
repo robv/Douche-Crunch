@@ -23,6 +23,26 @@ class DouchePeer extends BaseDouchePeer {
 		return DouchePeer::doSelectOne($c);
 	}
 
+	public static function getMostDouchey(Criteria $crit = null) {
+		if ($crit instanceof Criteria) {
+			$c = clone $crit;
+		} else {
+			$c = new Criteria;
+		}
+
+		DouchePeer::addSelectColumns($c);
+
+		if ($c instanceof Criteria) {
+			$c->addSelectColumn('SUM(' . DoucheVotePeer::VOTE . ') AS total_doucheyness');
+			$c->addDescendingOrderByColumn('total_doucheyness');
+			$c->addGroupByColumn(DoucheVotePeer::DOUCHE_ID);
+			$c->add(DouchePeer::ID, DouchePeer::ID . ' = ' . DoucheVotePeer::DOUCHE_ID, Criteria::CUSTOM);
+			$c->setLimit(10);
+		}
+
+		return DouchePeer::doSelect($c);
+	}
+
 	/**
 	 * Retrieve a single, random user to start from.
 	 * 

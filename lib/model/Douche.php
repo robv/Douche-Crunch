@@ -30,7 +30,7 @@ class Douche extends BaseDouche {
 	}
 
 	public function __toString() {
-		return $this->getTwitterName();
+		return '@' . $this->getTwitterScreenName() . ' - ' . $this->getTwitterName();
 	}
 
 	public function getTwitterNameSlug() {

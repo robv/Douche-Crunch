@@ -38,23 +38,11 @@
 	</div>
 	
 	<div id="two_column_content_right">
-		
 		<h2>Are they a Douche?</h2>
-		
-		<form id="douche_check_form">
-			<input type="text" class="douche_check_form_input" />
-			<input type="submit" value="Check Now" class="douche_check_form_submit" />
-		</form>
-		
+		<?php include_component('douche', 'new'); ?>
+
 		<h2>Douche Leaderboard</h2>
-	
-		<ol>
-			<li><a href="#">Person</a></li>
-			<li>Person</li>
-			<li>Person</li>
-			<li>Person</li>
-		</ol>
-	
+		<?php include_component('douche', 'leaderboard'); ?>
 	</div>
 	
 </div>
