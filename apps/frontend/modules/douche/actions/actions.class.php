@@ -76,6 +76,11 @@ class doucheActions extends sfActions {
 		$viewed[$douche->getId()] = $douche->getId();
 		$this->getUser()->setAttribute('already_viewed', $viewed);
 
+		if ($douche->getUpdatedAt('U') < strtotime('2 hours ago')) {
+			$douche->updateLatestTweet();
+			$douche->save();
+		}
+
 		$this->douche = $douche;
 	}
 
