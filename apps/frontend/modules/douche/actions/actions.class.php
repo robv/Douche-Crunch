@@ -21,7 +21,7 @@ class doucheActions extends sfActions {
 			$redirect_to = DouchePeer::retrieveRandom();
 		}
 
-		if ($douche instanceof Douche) {
+		if ($redirect_to instanceof Douche) {
 			$this->redirect('douche_view', $redirect_to);
 		} else {
 			$this->redirect('errors/noUsers');
