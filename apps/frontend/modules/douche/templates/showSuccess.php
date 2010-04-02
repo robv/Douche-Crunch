@@ -22,10 +22,10 @@
 		
 		<div class="vote_buttons">
 			<span class="vote_buttons_yes">
-				<?php echo link_to('Yeah, they are!', 'douche_confirm', $douche); ?>
+				<?php echo link_to('Yeah, they are!', '@douche_confirm', $douche); ?>
 			</span>
 			<span class="vote_button_no">
-				<?php echo link_to('No way!!11!1', 'douche_deny', $douche); ?>
+				<?php echo link_to('No way!!11!1', '@douche_deny', $douche); ?>
 			</span>
 		</div>
 		
