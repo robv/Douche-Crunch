@@ -225,3 +225,13 @@ body {
 #two_column_content_right ol li a:hover {
 	color: #333;
 }
+
+.upvotes {
+	font-size: 1.4em;
+	color: #0087CB;
+	margin: 4px 0;
+}
+
+.downvotes {
+	color: #777;
+}

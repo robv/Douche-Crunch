@@ -26,9 +26,6 @@ douche_view:
   requirements:
     sf_method: [get]
 
-
-
-
 homepage:
   url:   /
   param: { module: douche, action: index }

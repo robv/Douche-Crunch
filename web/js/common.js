@@ -14,7 +14,14 @@ var Site;
 			
 			// On Dom Ready
 			$(function() {
-				
+				$('.vote_button_yes a').bind('click', function(e) {
+					e.preventDefault();
+					$('.vote_buttons').load($(this).attr('href'));
+				});
+				$('.vote_button_no a').bind('click', function(e) {
+					e.preventDefault();
+					$('.vote_buttons').load($(this).attr('href'));
+				});
 			});
 		
 			// On Window Load
