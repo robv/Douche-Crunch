@@ -1,4 +1,4 @@
-		<h2 class="screen_name"><a href="http://twitter.com/<?php echo $douche->getTwitterScreenName(); ?>">@<?php echo $douche->getTwitterScreenName(); ?></a></h2>
+		<h2 class="screen_name"><a target="_blank" href="http://twitter.com/<?php echo $douche->getTwitterScreenName(); ?>">@<?php echo $douche->getTwitterScreenName(); ?></a></h2>
 		
 		<div class="image_wrapper_wrapper">
 			<div class="image_wrapper">
