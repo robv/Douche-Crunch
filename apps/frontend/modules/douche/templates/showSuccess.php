@@ -36,3 +36,14 @@
 				$key = array_rand($phrases);
 				echo '<p>"' . $phrases[$key] . '" - @' . $douche->getTwitterScreenName() . ' </p>';
 ?>
+<?php
+
+$message = 'Hey look! @' . $douche->getTwitterScreenName() . ' has ' . $douche->getUpVotes();
+if ($douche->getUpVotes() == 1) {
+	$message .= ' person';
+} else {
+	$message .= 'people';
+}
+$message .= ' who thinks he is a douche... ' . url_for('douche_view', $douche, true);
+?>
+<p><a href="http://twitter.com/?status=<?php echo urlencode($message); ?>">Tweet this!</a></p>

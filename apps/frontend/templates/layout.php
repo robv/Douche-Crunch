@@ -41,6 +41,9 @@
 
 				<h2>Douche Leaderboard</h2>
 				<?php include_component('douche', 'leaderboard'); ?>
+
+				<h2>Hey look, we're on the tweeter too!</h2>
+				<p><a href="http://twitter.com/douchecrunch">@douchecrunch</a></p>
 			</div>
 			
 		</div>

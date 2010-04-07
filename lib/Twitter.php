@@ -520,7 +520,7 @@ class Twitter extends TwitterBase {
 			curl_setopt($curl_handle, CURLOPT_POSTFIELDS, http_build_query($options));
 		}
 		curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($curl_handle, CURLOPT_HTTPHEADER, array('Expect:'));
+		curl_setopt($curl_handle, CURLOPT_HTTPHEADER, array('Expect: ', 'X-Twitter-Client: DoucheCrunch', 'X-Twitter-Client-Version: 1.0', 'X-Twitter-Client-URL: http://douchecrunch.com/'));
 		$twitter_data = curl_exec($curl_handle);
 		$this->http_status = curl_getinfo($curl_handle, CURLINFO_HTTP_CODE);
 		$this->last_api_call = $api_url;

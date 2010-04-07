@@ -18,6 +18,7 @@
  */
 class Douche extends BaseDouche {
 	protected $twitter_data = array();
+	protected $twitter = null;
 
 	/**
 	 * Initializes internal state of Douche object.
@@ -86,6 +87,8 @@ class Douche extends BaseDouche {
 			if (!$this->updateAllFromTwitter()) {
 				return false;
 			}
+			$this->initiateTwitter();
+				$r = $this->twitter->updateStatus('@' . $this->getTwitterScreenName() . ', looks like someone might think you are a bit of a douche... http://douchecrunch.com/' . $this->getTwitterScreenName() . '/' . $this->getTwitterNameSlug());
 		}
 		parent::save($con);
 	}
@@ -222,10 +225,12 @@ class Douche extends BaseDouche {
 	}
 
 	protected function retrieveFromTwitter() {
+
 		if ($this->twitter_data !== array()) {
 			return true;
 		}
-		$twitter = new Twitter(sfConfig::get('app_twitter_username'), sfConfig::get('app_twitter_password'));
+		$this->initiateTwitter();
+
 
 		$params = array();
 		$twitter_id = $this->getTwitterId();
@@ -235,7 +240,7 @@ class Douche extends BaseDouche {
 			$params['screen_name'] = $this->getTwitterScreenName();
 		}
 
-		$data = json_decode($twitter->showUser($params, 'json'), true);
+		$data = json_decode($this->twitter->showUser($params, 'json'), true);
 		if (isset($data['error'])) {
 			return false;
 		}
@@ -246,4 +251,11 @@ class Douche extends BaseDouche {
 		return true;
 	}
 
+	protected function initiateTwitter() {
+		if (is_null($this->twitter)) {
+				$this->twitter = new Twitter(sfConfig::get('app_twitter_username'), sfConfig::get('app_twitter_password'));
+		}
+		return true;
+		
+	}
 } // Douche
