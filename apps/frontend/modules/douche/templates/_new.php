@@ -3,5 +3,6 @@
 			<?php echo $form->renderGlobalErrors() ?>
 			<?php echo $form['twitter_screen_name']->renderError() ?>
 			<input name="douche[twitter_screen_name]" type="text" class="douche_check_form_input" />
+			<p>(their twitter account goes up there!)
 			<input type="submit" value="Check Now" class="douche_check_form_submit" />
 		</form>
