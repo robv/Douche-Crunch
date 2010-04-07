@@ -91,6 +91,10 @@ body {
 	font-size: 1.1em;
 }
 
+.skip_this_douche {
+	margin: -10px 0 0 0;
+}
+
 #two_column_content_left .hr {
 	width: 100%;
 	height: 1px;

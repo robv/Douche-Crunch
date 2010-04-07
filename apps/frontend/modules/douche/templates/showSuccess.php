@@ -32,6 +32,7 @@
 				<?php echo link_to('No way!!11!1', 'douche_deny', $douche); ?>
 			</span>
 		</div>
+		<div class="default_format skip_this_douche"><center>or you can <?php echo link_to('skip this douche', 'douche/index'); ?>.</center></div>
 		
 		<div class="hr"><hr /></div>
 		
@@ -55,7 +56,8 @@
 						"Apple's new product is going to be lame sauce.",
 						'Check out this posed pic of my dog driving my car: <a href="http://twitpic.com/1cn0hs">http://twitpic.com/1cn0hs</a>');
 				$key = array_rand($phrases);
-				echo '<p>"' . $phrases[$key] . '" - @' . $douche->getTwitterScreenName() . ' </p>';
+				//echo '<p>"' . $phrases[$key] . '" - @' . $douche->getTwitterScreenName() . ' </p>';
+				echo '<p>' . $douche->getLatestTweet() . '</p>';
 			?>
 
 		</div>
