@@ -88,9 +88,9 @@ class Douche extends BaseDouche {
 				return false;
 			}
 			$this->initiateTwitter();
-				$r = $this->twitter->updateStatus('@' . $this->getTwitterScreenName() . ', looks like someone might think you are a bit of a douche... http://douchecrunch.com/' . $this->getTwitterScreenName() . '/' . $this->getTwitterNameSlug());
+			$this->twitter->updateStatus('@' . $this->getTwitterScreenName() . ', looks like someone might think you are a bit of a douche... http://douchecrunch.com/' . $this->getTwitterScreenName() . '/' . $this->getTwitterNameSlug());
 		}
-		parent::save($con);
+		return parent::save($con);
 	}
 
 
