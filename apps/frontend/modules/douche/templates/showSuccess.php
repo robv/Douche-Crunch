@@ -40,10 +40,10 @@
 
 $message = 'Hey look! @' . $douche->getTwitterScreenName() . ' has ' . $douche->getUpVotes();
 if ($douche->getUpVotes() == 1) {
-	$message .= ' person';
+	$message .= ' person who thinks';
 } else {
-	$message .= 'people';
+	$message .= ' people who think';
 }
-$message .= ' who thinks he is a douche... ' . url_for('douche_view', $douche, true);
+$message .= ' they are a douche... ' . url_for('douche_view', $douche, true);
 ?>
 <p><a href="http://twitter.com/?status=<?php echo urlencode($message); ?>">Tweet this!</a></p>
