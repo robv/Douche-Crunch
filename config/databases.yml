@@ -4,6 +4,8 @@
 dev:
   propel:
     param:
+      username: root
+      password: 
       classname:  DebugPDO
       debug:
         realmemoryusage: true
@@ -32,8 +34,6 @@ all:
     param:
       classname:  PropelPDO
       dsn:        mysql:dbname=DoucheCrunch;host=localhost
-      username:   root
-      password:   
       encoding:   utf8
       persistent: true
       pooling:    true
