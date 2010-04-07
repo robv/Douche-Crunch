@@ -25,7 +25,7 @@
 <?php if ($sf_user->hasFlash('error')) { echo $sf_user->getFlash('error'); } ?>
 
 			<div id="title_bar">
-				<h2><?php echo get_slot('header'); //, 'Social Media Douchebag or Not?'); ?></h2>
+				<h2><?php echo get_slot('header', 'Social Media Douchebag or Not?'); ?></h2>
 			</div>
 
 		<div id="two_column_content">
