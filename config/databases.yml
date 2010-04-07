@@ -22,9 +22,9 @@ test:
 prod:
   propel:
     param:
-      dsn:				mysql:dbname=DoucheCrunch;host=localhost
-      username:   sdlfkjsdfsdfl
-      password:		sdfsdf
+      dsn:				mysql:dbname=douchecrunch;host=localhost
+      username:   d0uch3cruncH
+      password:		wroejoeswLec8l9P1ia9HoUst
 
 all:
   propel:
