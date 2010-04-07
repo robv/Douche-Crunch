@@ -1,4 +1,22 @@
-		<h2 class="screen_name"><a target="_blank" href="http://twitter.com/<?php echo $douche->getTwitterScreenName(); ?>">@<?php echo $douche->getTwitterScreenName(); ?></a></h2>
+		<h2 class="screen_name">
+			<a target="_blank" href="http://twitter.com/<?php echo $douche->getTwitterScreenName(); ?>">
+				@<?php echo $douche->getTwitterScreenName(); ?>
+			</a>
+			<?php
+				$message = 'Hey look! @' . $douche->getTwitterScreenName() . ' has ' . $douche->getUpVotes();
+				if ($douche->getUpVotes() == 1) {
+					$message .= ' person who thinks';
+				} else {
+					$message .= ' people who think';
+				}
+				$message .= ' they are a douche... ' . url_for('douche_view', $douche, true);
+			?>
+			<span style="position:absolute; margin:-8px 0 0 10px;">
+				<a href="http://twitter.com/?status=<?php echo urlencode($message); ?>">
+					<img src="/images/main/tweetthis.png" width="116" height="40" alt="Tweetthis" />
+				</a>
+			</span>
+		</h2>
 		
 		<div class="image_wrapper_wrapper">
 			<div class="image_wrapper">
@@ -18,7 +36,10 @@
 		<div class="hr"><hr /></div>
 		
 		<h2>Their Latest Tweet</h2>
-				<?php
+		
+		<div class="default_format">
+		
+			<?php
 				$phrases = array('I have to go get my Ed Hardy shirt.',
 						"Why should I follow you back? You're a nobody.",
 						"I can't be bothered right now. I'm synergizing.",
@@ -35,15 +56,6 @@
 						'Check out this posed pic of my dog driving my car: <a href="http://twitpic.com/1cn0hs">http://twitpic.com/1cn0hs</a>');
 				$key = array_rand($phrases);
 				echo '<p>"' . $phrases[$key] . '" - @' . $douche->getTwitterScreenName() . ' </p>';
-?>
-<?php
+			?>
 
-$message = 'Hey look! @' . $douche->getTwitterScreenName() . ' has ' . $douche->getUpVotes();
-if ($douche->getUpVotes() == 1) {
-	$message .= ' person who thinks';
-} else {
-	$message .= ' people who think';
-}
-$message .= ' they are a douche... ' . url_for('douche_view', $douche, true);
-?>
-<p><a href="http://twitter.com/?status=<?php echo urlencode($message); ?>">Tweet this!</a></p>
+		</div>

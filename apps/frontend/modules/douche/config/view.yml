@@ -10,7 +10,7 @@ default:
     #robots:       index, follow
 
   stylesheets:    [main]
-  javascripts:    [jquery,common]
+  javascripts:    [jquery,jquery.input_hint.js,common]
  
   has_layout:     true
   layout:         layout

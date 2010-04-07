@@ -4,6 +4,10 @@ body {
 	font-family: Helvetica, Arial, Geneva, sans-serif;
 }
 
+.pad_top {
+	padding-top: 20px;
+}
+
 #header_nav {
 	background-color: #222;
 	width: 100%;
@@ -73,6 +77,20 @@ body {
 	padding: 20px;
 }
 
+#two_column_content_left .default_format a:link, #two_column_content_left .default_format a:visited, #two_column_content_left .default_format a:active {
+	color: #000;
+}
+
+#two_column_content_left .default_format a:hover {
+	color: #999;
+}
+
+#two_column_content_left .default_format p {
+	margin-bottom: 20px;
+	line-height: 1.6em;
+	font-size: 1.1em;
+}
+
 #two_column_content_left .hr {
 	width: 100%;
 	height: 1px;
@@ -126,6 +144,10 @@ body {
 #two_column_content_left .image_wrapper .image {
 	display: table-cell;
 	vertical-align: middle;
+}
+
+#two_column_content_left .image_wrapper .image img {
+	max-height: 300px;
 }
 
 .vote_buttons {
@@ -214,17 +236,22 @@ body {
 	margin-left: 25px;
 }
 
-#two_column_content_right ol li {
+#two_column_content_right li {
 	margin-bottom: 8px;
 }
 
-#two_column_content_right ol li a:link, #two_column_content_right ol li a:active, #two_column_content_right ol li a:visited {
+#two_column_content_right li a:link, #two_column_content_right li a:active, #two_column_content_right li a:visited {
 	color: #0087CB;
 	text-decoration: none;
 }
 
-#two_column_content_right ol li a:hover {
+#two_column_content_right li a:hover {
 	color: #333;
+}
+
+#two_column_content_right li span {
+	color: #999;
+	font-size: .9em;
 }
 
 .upvotes {
