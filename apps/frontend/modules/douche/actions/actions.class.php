@@ -83,7 +83,7 @@ class doucheActions extends sfActions {
 		if ($douche instanceof Douche && !$douche->isNew()) {
 			$this->redirect('douche_view', $douche);
 		} else {
-			$this->getUser()->setFlash('error', "Yikes! We couldn't find an account on twitter named " . $name . "... sorry :(");
+			$this->getUser()->setFlash('error', "Yikes! Twitter either cut us off, or we couldn't find an account on twitter named " . $name . "... sorry :(");
 			$this->redirect($request->getReferer());
 		}
 	}
