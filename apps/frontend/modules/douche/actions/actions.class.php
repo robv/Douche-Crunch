@@ -100,6 +100,8 @@ class doucheActions extends sfActions {
 				|| $this->getUser()->getAttribute('dvote_for', 'foo') != $this->douche->getId()) {
 			$this->forward404('Yikes, that did not want to go, did it?');
 		}
+
+		$this->getUser()->setAttribute('dvote_hash', 'foo');
 		
 
 		if ($direction) {
