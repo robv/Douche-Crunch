@@ -60,11 +60,6 @@ class doucheActions extends sfActions {
 		$viewed[$douche->getId()] = $douche->getId();
 		$this->getUser()->setAttribute('already_viewed', $viewed);
 
-		if ($douche->getUpdatedAt('U') < strtotime('2 hours ago')) {
-			$douche->updateLatestTweet();
-			$douche->save();
-		}
-
 		// Simple vote rate-limit :)
 		$hash = sha1(uniqid());
 		$this->getResponse()->setCookie('dvote', $hash);
