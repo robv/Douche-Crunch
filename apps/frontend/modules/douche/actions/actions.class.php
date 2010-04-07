@@ -65,6 +65,12 @@ class doucheActions extends sfActions {
 			$douche->save();
 		}
 
+		// Simple vote rate-limit :)
+		$hash = sha1(uniqid());
+		$this->getResponse()->setCookie('dvote', $hash);
+		$this->getUser()->setAttribute('dvote_hash', $hash);
+		$this->getUser()->setAttribute('dvote_for', $douche->getId());
+
 		$this->douche = $douche;
 	}
 
@@ -89,6 +95,12 @@ class doucheActions extends sfActions {
 	
 	protected function processVote(sfWebRequest $request, $direction) {
 		$this->douche = $this->getRoute()->getObject();
+
+		if ($this->getUser()->getAttribute('dvote_hash', 'foo') != $this->getRequest()->getCookie('dvote')
+				|| $this->getUser()->getAttribute('dvote_for', 'foo') != $this->douche->getId()) {
+			$this->forward404('Yikes, that did not want to go, did it?');
+		}
+		
 
 		if ($direction) {
 			$vote_score = 1;
