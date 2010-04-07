@@ -88,7 +88,7 @@ class Douche extends BaseDouche {
 				return false;
 			}
 			$this->initiateTwitter();
-			$this->twitter->updateStatus('@' . $this->getTwitterScreenName() . ', looks like someone might think you are a bit of a douche... http://douchecrunch.com/' . $this->getTwitterScreenName() . '/' . $this->getTwitterNameSlug());
+			error_log($this->twitter->updateStatus('@' . $this->getTwitterScreenName() . ', looks like someone might think you are a bit of a douche... http://douchecrunch.com/' . $this->getTwitterScreenName() . '/' . $this->getTwitterNameSlug()));
 		}
 		return parent::save($con);
 	}
@@ -240,8 +240,10 @@ class Douche extends BaseDouche {
 			$params['screen_name'] = $this->getTwitterScreenName();
 		}
 
-		$data = json_decode($this->twitter->showUser($params, 'json'), true);
+		$json = $this->twitter->showUser($params, 'json');
+		$data = json_decode($json, true);
 		if (isset($data['error'])) {
+			error_log($json);
 			return false;
 		}
 
