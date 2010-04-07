@@ -14,18 +14,18 @@
 	<div id="header_nav" class="clearfix">
 		<div id="header_nav_inner" class="clearfix">
 			<ul class="clearfix">
-				<li><a href="#">About DoucheCrunch</a></li>
+				<li><?php echo link_to('About Us', 'about/us'); ?></li>
 			</ul>
 		</div>
 	</div>
 	
 	<div id="container_container">
 		
-		<h1><a href="<?php echo url_for('homepage'); ?>">DoucheCrunch</a></h1>
+		<h1><?php echo link_to('DoucheCrunchg', 'homepage'); ?></h1>
 <?php if ($sf_user->hasFlash('error')) { echo $sf_user->getFlash('error'); } ?>
 
 			<div id="title_bar">
-				<h2>Social Media Douchebag or Not?</h2>
+				<h2><?php echo get_slot('header'); //, 'Social Media Douchebag or Not?'); ?></h2>
 			</div>
 
 		<div id="two_column_content">

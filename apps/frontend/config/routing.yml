@@ -2,6 +2,10 @@ errors:
   url:		/error/:action
   param: { module: errors }
 
+about:
+  url:	/about/:action
+  param: { module: about }
+
 douche:
   class:   sfPropelRouteCollection
   options: { model: Douche }
