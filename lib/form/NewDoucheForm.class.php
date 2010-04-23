@@ -11,8 +11,9 @@ class NewDoucheForm extends BaseDoucheForm
 {
   public function configure()
   {
+	  $this->setWidget('submit_ip', new sfWidgetFormInputHidden());
+
 	  unset($this['id']);
-	  unset($this['submit_ip']);
 	  unset($this['twitter_id']);
 	  unset($this['twitter_name']);
 	  unset($this['twitter_description']);

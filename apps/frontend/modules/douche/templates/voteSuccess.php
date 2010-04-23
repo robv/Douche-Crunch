@@ -1,9 +1,12 @@
 <?php
+// Were they a douche?
 if (!$direction) {
 	echo 'Whaaat?';
 }
+?>
 
-echo '<div class="upvotes">';
+<div class="upvotes">
+<?php
 if ($upvotes == 0) {
 	echo 'What? Nobody think\'s that ' . $name . ' is a douche!';
 } else if ($upvotes == 1) {
@@ -11,10 +14,12 @@ if ($upvotes == 0) {
 } else {
 	echo $upvotes . ' people think ' . $name . ' is a douche.';
 }
-echo '</div>';
+?>
+</div>
 
 
-echo '<div class="downvotes">';
+<div class="downvotes">
+<?php
 if ($downvotes == 0) {
 	echo 'Hehe, nobody thinks that ' . $name . ' isn\'t a douche.';
 } else if ($downvotes == 1) {
@@ -22,9 +27,8 @@ if ($downvotes == 0) {
 } else {
 	echo $downvotes . ' people think ' . $name . ' isn\'t a douche.';
 }
-echo '</div>';
-
 ?>
+</div>
 
 <div class="vote_buttons">
 	<div class="next"><?php echo link_to('Next', 'douche/index'); ?></div>

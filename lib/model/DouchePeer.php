@@ -17,12 +17,22 @@
  * @package    lib.model
  */
 class DouchePeer extends BaseDouchePeer {
+	/**
+	 * Get a douche by their twitter screen name
+	 * @param string $twitter_screen_name
+	 * @return Douche
+	 */
 	public static function retrieveByTwitterScreenName($twitter_screen_name) {
 		$c = new Criteria;
 		$c->add(DouchePeer::TWITTER_SCREEN_NAME, $twitter_screen_name);
 		return DouchePeer::doSelectOne($c);
 	}
 
+	/**
+	 * Get the top 15 douches based on their douchey-score
+	 * @param Criteria $crit
+	 * @return array(Douche[, Douche[, Douche]]])
+	 */
 	public static function getMostDouchey(Criteria $crit = null) {
 		if ($crit instanceof Criteria) {
 			$c = clone $crit;
@@ -32,13 +42,11 @@ class DouchePeer extends BaseDouchePeer {
 
 		DouchePeer::addSelectColumns($c);
 
-		if ($c instanceof Criteria) {
-			$c->addSelectColumn('SUM(' . DoucheVotePeer::VOTE . ') AS total_doucheyness');
-			$c->addDescendingOrderByColumn('total_doucheyness');
-			$c->addGroupByColumn(DoucheVotePeer::DOUCHE_ID);
-			$c->add(DouchePeer::ID, DouchePeer::ID . ' = ' . DoucheVotePeer::DOUCHE_ID, Criteria::CUSTOM);
-			$c->setLimit(15);
-		}
+		$c->addSelectColumn('SUM(' . DoucheVotePeer::VOTE . ') AS total_doucheyness');
+		$c->addDescendingOrderByColumn('total_doucheyness');
+		$c->addGroupByColumn(DoucheVotePeer::DOUCHE_ID);
+		$c->add(DouchePeer::ID, DouchePeer::ID . ' = ' . DoucheVotePeer::DOUCHE_ID, Criteria::CUSTOM);
+		$c->setLimit(15);
 
 		return DouchePeer::doSelect($c);
 	}

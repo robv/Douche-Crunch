@@ -30,23 +30,20 @@ class Douche extends BaseDouche {
 		parent::__construct();
 	}
 
+	/**
+	 *
+	 * @return <type>
+	 */
 	public function __toString() {
 		return '@' . $this->getTwitterScreenName() . ' - ' . $this->getTwitterName();
 	}
 
+	/**
+	 * Get the twitter name slugified for the URL
+	 * @return <type>
+	 */
 	public function getTwitterNameSlug() {
 		return UrlTools::slugify($this->getTwitterName());
-	}
-
-	public function getDouchePercentage() {
-		if ($this->isTwitterProtected()) {
-			return 0;
-		}
-		return 100;
-		//>10000 followers
-		//follow less than 10%
-		//tweet more than 20/day
-
 	}
 
 	public function isTwitterProtected() {
@@ -88,7 +85,8 @@ class Douche extends BaseDouche {
 				return false;
 			}
 			$this->initiateTwitter();
-			error_log($this->twitter->updateStatus('@' . $this->getTwitterScreenName() . ', looks like someone might think you are a bit of a douche... http://douchecrunch.com/' . $this->getTwitterScreenName() . '/' . $this->getTwitterNameSlug()));
+			// This has been disabled because Twitter doesn't like it so much.
+			//error_log($this->twitter->updateStatus('@' . $this->getTwitterScreenName() . ', looks like someone might think you are a bit of a douche... http://douchecrunch.com/' . $this->getTwitterScreenName() . '/' . $this->getTwitterNameSlug()));
 		}
 		return parent::save($con);
 	}
