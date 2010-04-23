@@ -5,7 +5,7 @@ dev:
   propel:
     param:
       username: root
-      password: 
+      password: rootpassword
       classname:  DebugPDO
       debug:
         realmemoryusage: true

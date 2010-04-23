@@ -21,14 +21,14 @@
 	
 	<div id="container_container">
 		
-		<h1><?php echo link_to('DoucheCrunchg', 'homepage'); ?></h1>
+		<h1><?php echo link_to('DoucheCrunch', 'homepage'); ?></h1>
 <?php if ($sf_user->hasFlash('error')) { echo $sf_user->getFlash('error'); } ?>
 
 			<div id="title_bar">
 				<h2><?php echo get_slot('header', 'Social Media Douchebag or Not?'); ?></h2>
 			</div>
 
-		<div id="two_column_content">
+		<div id="two_column_content" class="clearfix">
 			
 			<div id="two_column_content_left">
 				<?php echo $sf_content ?>
@@ -42,8 +42,10 @@
 				<h2>Douche Leaderboard</h2>
 				<?php include_component('douche', 'leaderboard'); ?>
 
-				<h2>Hey look, we're on the tweeter too!</h2>
-				<p><a href="http://twitter.com/douchecrunch">@douchecrunch</a></p>
+				<h2 class="pad_top">We're on the tweeter!</h2>
+				<ul>
+					<li>Follow us <a href="http://twitter.com/douchecrunch">@douchecrunch</a>.</li>
+				</ul>
 			</div>
 			
 		</div>

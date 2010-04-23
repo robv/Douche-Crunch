@@ -22,6 +22,7 @@ var Site;
 					e.preventDefault();
 					$('.vote_buttons').load($(this).attr('href'));
 				});
+				$('input.hint').input_hint({attribute: 'title'});
 			});
 		
 			// On Window Load

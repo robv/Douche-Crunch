@@ -1,5 +1,5 @@
 		<ol>
 <?php foreach ($douches as $douche) { ?>
-			<li><?php echo link_to($douche, 'douche_view', $douche); ?></li>
+			<li><span class="float_right"><?php echo $douche->getUpVotes(); ?> votes</span><?php echo link_to($douche->getTwitterScreenName(), 'douche_view', $douche); ?></li>
 <?php } ?>
 		</ol>
